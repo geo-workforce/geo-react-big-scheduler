@@ -448,8 +448,14 @@ class Scheduler extends Component {
             if(this.schedulerContent.scrollTop === 0 && onScrollTop != undefined) {
                 onScrollTop(schedulerData, this.schedulerContent, this.schedulerContent.scrollHeight - this.schedulerContent.clientHeight);
             }
-            if(this.schedulerContent.scrollTop === this.schedulerContent.scrollHeight - this.schedulerContent.clientHeight && onScrollBottom != undefined) {
-                onScrollBottom(schedulerData, this.schedulerContent, this.schedulerContent.scrollHeight - this.schedulerContent.clientHeight);
+            if(onScrollBottom != undefined) {
+                const contentHeight_ = this.schedulerContent.scrollTop;
+                const sHeight_ = this.schedulerContent.scrollHeight;
+                const cheight_ = this.schedulerContent.clientHeight;
+                const diff = Math.abs(contentHeight_ - (sHeight_ - cheight_));
+                if(diff >= 0 && diff < 1) {
+                    onScrollBottom(schedulerData, this.schedulerContent, this.schedulerContent.scrollHeight - this.schedulerContent.clientHeight);
+                }
             }
         }
         this.setState({
