@@ -511,13 +511,14 @@ class EventItem extends Component {
             eventItemTemplate = eventItemTemplateResolver(schedulerData, eventItem, bgColor, isStart, isEnd, 'event-item', config.eventItemHeight, undefined);
         const h = config.eventItemHeight
         const h2 = h+1;
+        var calculatedTop = 0;
         if(top == h2){
-            top = config.indicatorHeight;
+            calculatedTop = config.indicatorHeight;
         } else if(top > h2) {
-            top = top - ( h- config.indicatorHeight);
+            calculatedTop = top - ( h- config.indicatorHeight);
         }
 
-        let a = <a className="timeline-event" style={{left: left, width: width, top: top}} onClick={(e) => { if(!!eventItemClick) eventItemClick(schedulerData, eventItem, { left: left, width: width, top: top }, e);}}>
+        let a = <a className="timeline-event" style={{left: left, width: width, top: calculatedTop}} onClick={(e) => { if(!!eventItemClick) eventItemClick(schedulerData, eventItem, { left: left, width: width, top: calculatedTop }, e);}}>
             {eventItemTemplate}
             {startResizeDiv}
             {endResizeDiv}
