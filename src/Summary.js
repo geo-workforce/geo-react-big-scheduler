@@ -26,7 +26,7 @@ class Summary extends Component {
             textAlign = 'right';
         else if(config.summaryPos === SummaryPos.TopLeft || config.summaryPos === SummaryPos.BottomLeft)
             textAlign = 'left';
-        let style = {height: config.eventItemHeight, color: color, textAlign: textAlign, marginLeft: '6px', marginRight: '6px'};
+        let style = {height: config.indicatorHeight, color: color, textAlign: textAlign, marginLeft: '6px', marginRight: '6px'};
         if(summary.fontSize != undefined)
             style = {...style, fontSize: summary.fontSize};
 
