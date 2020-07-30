@@ -509,13 +509,18 @@ class EventItem extends Component {
         );
         if(eventItemTemplateResolver != undefined)
             eventItemTemplate = eventItemTemplateResolver(schedulerData, eventItem, bgColor, isStart, isEnd, 'event-item', config.eventItemHeight, undefined);
-        const h = config.eventItemHeight
-        const h2 = h+1;
         var calculatedTop = 0;
-        if(top == h2){
-            calculatedTop = config.indicatorHeight;
-        } else if(top > h2) {
-            calculatedTop = top - ( h- config.indicatorHeight);
+        if(schedulerData.viewType == 1) {
+            var h = config.eventItemHeight;
+            var h2 = h + 1;
+            var calculatedTop = 0;
+            if (top == h2) {
+                calculatedTop = 7;
+            } else if (top > h2) {
+                calculatedTop = top - (h - 7);
+            }
+        }else {
+            calculatedTop = top;
         }
 
         let a = <a className="timeline-event" style={{left: left, width: width, top: calculatedTop}} onClick={(e) => { if(!!eventItemClick) eventItemClick(schedulerData, eventItem, { left: left, width: width, top: calculatedTop }, e);}}>
