@@ -515,9 +515,9 @@ class EventItem extends Component {
             var h2 = h + 1;
             var calculatedTop = 0;
             if (top == h2) {
-                calculatedTop = 7;
+                calculatedTop = 5;
             } else if (top > h2) {
-                calculatedTop = top - (h - 7);
+                calculatedTop = top - (h - 5);
             }
         }else {
             calculatedTop = top;
